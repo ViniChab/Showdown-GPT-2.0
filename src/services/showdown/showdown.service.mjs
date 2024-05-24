@@ -34,10 +34,12 @@ export class ShowdownService {
     await this.page.goto(process.env.SHOWDOWN_URL, {
       waitUntil: "networkidle2",
     });
+
+    return this.page;
   }
 
   async startTeamBuilder() {
-    console.log("### You have 50 seconds to build your team");
+    console.log("### YOU HAVE 50 SECONDS TO CREATE YOUR TEAM");
 
     await this.pupService.waitForTimeout(50000);
 

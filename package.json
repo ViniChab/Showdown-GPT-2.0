@@ -9,7 +9,8 @@
   "author": "Vinicius Chab",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "eslint": "^9.3.0",
-    "pupeteer": "^0.0.1"
+    "puppeteer-real-browser": "^1.2.17"
   }
 }

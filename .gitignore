@@ -2,3 +2,5 @@ node_modules/
 .vscode/
 screenshot.png
 .env
+showdownSessionData.json
+team.txt

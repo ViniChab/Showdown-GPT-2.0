@@ -4,13 +4,15 @@
   "description": "ChatGPT jogando pokemon",
   "main": "index.mjs",
   "scripts": {
-    "start": "node index.mjs"
+    "start": "node index.mjs",
+    "start:teambuilder": "node index.mjs --teambuilder"
   },
   "author": "Vinicius Chab",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
     "eslint": "^9.3.0",
+    "puppeteer": "^22.10.0",
     "puppeteer-real-browser": "^1.2.17"
   }
 }

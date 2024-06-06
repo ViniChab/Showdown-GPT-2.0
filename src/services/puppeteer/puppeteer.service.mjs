@@ -22,25 +22,25 @@ export class PuppeteerService {
   }
 
   async clickUsingCss(page, selector) {
-    await this.screenshot();
+    await this.screenshot(page);
 
     const button = await page.waitForSelector(selector);
     await button.click();
 
-    await this.screenshot();
+    await this.screenshot(page);
   }
 
   async typeUsingCss(page, selector, text) {
-    await this.screenshot();
+    await this.screenshot(page);
 
     const input = await page.waitForSelector(selector);
     await input.type(text);
 
-    await this.screenshot();
+    await this.screenshot(page);
   }
 
   async clickOnXpathButton(page, selector) {
-    await this.screenshot();
+    await this.screenshot(page);
 
     let success = false;
 
@@ -63,7 +63,7 @@ export class PuppeteerService {
       } catch {}
     }
 
-    await this.screenshot();
+    await this.screenshot(page);
   }
 
   async saveSession(page, filePath) {

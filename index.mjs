@@ -13,14 +13,22 @@ const showdownService = new ShowdownService(puppeteerService);
 const args = process.argv.slice(2);
 const isTeamBuilder = args.includes("--teambuilder");
 
-// await chatGptService.startGptService();
 const showdownPage = await showdownService.startShowdownService();
-const battleService = new BattleService(showdownPage);
+await chatGptService.startGptService();
+const battleService = new BattleService(
+  showdownPage,
+  chatGptService,
+  puppeteerService
+);
 
 if (isTeamBuilder) {
   await showdownService.startTeamBuilder();
   process.exit(0);
 }
+
+await puppeteerService.restoreSession(showdownPage, "showdownSessionData.json");
+showdownPage.reload({ timeout: 0 });
+await puppeteerService.waitForTimeout(5000);
 
 await battleService.waitForBattle();
 await battleService.startBattle();

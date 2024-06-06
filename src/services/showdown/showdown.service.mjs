@@ -8,14 +8,14 @@ export class ShowdownService {
   page;
 
   constructor(puppeteerService) {
-    console.log("### SHOWDOWN SERVICE STARTED");
-
     this.pupService = puppeteerService;
   }
 
   async startShowdownService() {
+    console.log("### SHOWDOWN SERVICE STARTED");
+
     const height = 1080;
-    const width = 1920;
+    const width = 1080;
 
     const browser = await Puppeteer.launch({
       headless: false,

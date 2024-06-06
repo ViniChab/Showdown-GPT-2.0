@@ -8,12 +8,12 @@ export class ChatGptService {
   page;
 
   constructor(puppeteerService) {
-    console.log("### CHAT GPT SERVICE STARTED");
-
     this.pupService = puppeteerService;
   }
 
   async startGptService() {
+    console.log("### CHAT GPT SERVICE STARTED");
+
     const { browser, page } = await connect({
       headless: "auto",
       fingerprint: false,
@@ -53,7 +53,7 @@ export class ChatGptService {
       process.env.CHATGPT_PASSWORD
     );
 
-    await this.pupService.waitForTimeout(1000);
+    await this.pupService.waitForTimeout(1000, this.page);
 
     await this.pupService.clickOnXpathButton(this.page, "Continue");
 
@@ -62,7 +62,7 @@ export class ChatGptService {
 
   async goToGptPlayer() {
     await this.page.goto(process.env.CHATGPT_PLAYER_URL);
-    await this.pupService.waitForTimeout(3000);
+    await this.pupService.waitForTimeout(3000, this.page);
   }
 
   async sendMessage(message) {
@@ -72,11 +72,11 @@ export class ChatGptService {
       'button[data-testid="fruitjuice-send-button"]'
     );
 
-    await this.getGptResponse();
+    return await this.getGptResponse();
   }
 
   async getGptResponse() {
-    await this.pupService.waitForTimeout(7000);
+    await this.pupService.waitForTimeout(5000, this.page);
 
     const response = await this.page.evaluate(() => {
       /** @type { any } */
